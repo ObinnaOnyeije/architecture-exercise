@@ -21,6 +21,10 @@ public class FileConstructor {
 	private static String resourcePath = "src" + separator + "main" + separator + "resources" + separator;
 	private static Path csvPath = basePath.resolve(resourcePath + "PracticeFile.csv");
 	private static Path txtPath = basePath.resolve(resourcePath + "PracticeFile.txt");
+	
+	private static Path csvOutPath = basePath.resolve(resourcePath + "OutputFile.csv");
+	private static Path inpOutPath = basePath.resolve(resourcePath + "InpOutputFile.txt");
+	private static Path txtOutPath = basePath.resolve(resourcePath + "OutputFile.txt");
 
 	public static void main(String[] args) {
 		scan = new Scanner(System.in);
@@ -89,7 +93,7 @@ public class FileConstructor {
 							r_csv.print();
 							break;
 						case 3:
-							r_csv.save();
+							r_csv.save(csvOutPath.toString());
 							break;
 						}
 						break;
@@ -105,7 +109,7 @@ public class FileConstructor {
 							r_inp.print();
 							break;
 						case 3:
-							r_inp.save();
+							r_inp.save(inpOutPath.toString());
 							break;
 						}
 						break;
@@ -121,7 +125,7 @@ public class FileConstructor {
 							r_txt.print();
 							break;
 						case 3:
-							r_txt.save();
+							r_txt.save(txtOutPath.toString());
 							break;
 						}
 						break;

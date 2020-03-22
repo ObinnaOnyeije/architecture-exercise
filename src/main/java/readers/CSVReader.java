@@ -1,5 +1,6 @@
 package readers;
 
+import java.io.BufferedWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,14 +36,28 @@ public class CSVReader implements ReaderInterface {
 				}
 			}
 		} else {
-			System.out.println("No input instantiated");
+			System.out.println("No file instantiated");
 		}
 
 	}
 
-	public void save() {
-		// TODO Auto-generated method stub
-
+	public void save(String location) {
+		if(active) {
+			Path path = Paths.get(location);
+			try {
+				BufferedWriter bufferedWriter = Files.newBufferedWriter(path);
+				for(String[] line: text) {
+					bufferedWriter.append(String.join(",", line) + "\n");
+				}
+				bufferedWriter.flush();
+				bufferedWriter.close();
+				System.out.println("New file written to: " + location);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("No file instantiated");
+		}
 	}
 
 }
